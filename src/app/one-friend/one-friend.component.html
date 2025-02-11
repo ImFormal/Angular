@@ -1,12 +1,12 @@
-<div class="friend-card">
-    <img [src]="image" alt="{{ name }}" class="friend-image">
-    <h3>{{ name }}</h3>
-    <p>{{ getAge() }}</p>
-    <p>Status: {{ getStatus() }}</p>
-    <p>Réputation: {{ getReputation() }}</p>
-    <p>{{ getBio() }}</p>
+<div class="friend-card" [ngStyle]="{backgroundColor: getColor()}">
+    <img [src]="friend.image" alt="{{ friend.name }}" class="friend-image">
+    <h3 [ngClass]="this.friend.status === 'online' ? 'amiOn' : 'amiOff'">{{ friend.name }}</h3>
+    <p>{{ friend.age }}</p>
+    <p>Status: {{ friend.status }}</p>
+    <p>Réputation: {{ friend.reputation }}</p>
+    <p>{{ friend.bio }}</p>
     <p>Passions:</p>
     <ul>
-        <li *ngFor="let item of passion">{{ item }}</li>
+        <li *ngFor="let item of friend.passion">{{ item }}</li>
     </ul>
 </div>

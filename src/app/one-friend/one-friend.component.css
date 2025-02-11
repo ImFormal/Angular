@@ -17,13 +17,12 @@
   
   .friend-card h3 {
     font-size: 1.5em;
-    color: #333;
     margin-bottom: 10px;
   }
   
   .friend-card p, li {
     font-size: 1em;
-    color: #035f6b;
+    color: white;
     margin: 5px 0;
   }
   
@@ -34,10 +33,17 @@
   }
   
   .friend-image {
-    width: 100px; /* Ajuste selon la taille souhaitée */
+    width: 100px; 
     height: 100px;
-    border-radius: 50%; /* Cercle */
+    border-radius: 50%; 
     object-fit: cover;
     display: block;
-    margin: 0 auto 10px; /* Centrer l'image */
+    margin: 0 auto 10px; 
+  }
+
+  .amiOn{
+    color: chartreuse;
+  }
+  .amiOff{
+    color: violet;
   }

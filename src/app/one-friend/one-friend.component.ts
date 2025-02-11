@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Friend } from '../models/friend.interface';
 
 @Component({
   selector: 'app-one-friend',
@@ -7,37 +8,15 @@ import { CommonModule } from '@angular/common';
   templateUrl: './one-friend.component.html',
   styleUrl: './one-friend.component.css'
 })
-export class OneFriendComponent {
-  @Input() name: string = '';
-  @Input() age: number = 0;
-  @Input() status: string = '';
-  @Input() reputation: number = 0; 
-  @Input() bio: string = '';
-  @Input() passion: string[] = [];
-  @Input() image: string = '';
+export class OneFriendComponent implements OnInit {
+  @Input() friend!: Friend;
 
-  getAge(): string {
-    return `Age: ${this.age}`;
+  ngOnInit(): void {
+    Math.random() < 0.5 ? this.friend.status = "online" : this.friend.status = "offline";
   }
 
-  getStatus(): string {
-    return this.status === 'online' ? 'En ligne' : 'Hors ligne';
+  getColor(){
+    return this.friend.status === "online" ? "#2FD710" : "#D21F3C";
   }
-
-  getReputation(): string {
-    return this.reputation >= 5 ? 'Cool' : 'Ringard';
-  }
-
-  getBio(): string {
-    return `Bio: ${this.bio}`;
-  }
-
-  getPassion(): string {
-    return `Passions: ${this.passion}`;
-  }
-
-  getImage(): string {
-    return `${this.image}`;
-  }
-
+  
 }

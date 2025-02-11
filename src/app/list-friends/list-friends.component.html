@@ -6,14 +6,8 @@
 <p *ngIf="statusMessage === 'Aucun ami'">Aucun ami</p>
 <p *ngIf="statusMessage !== 'Aucun ami'">{{ statusMessage }}</p>
 <div class="friends-list">
-    <app-one-friend 
-        *ngFor="let friend of friends" 
-        [image]="friend.image"
-        [name]="friend.name" 
-        [age]="friend.age" 
-        [status]="friend.status" 
-        [reputation]="friend.reputation" 
-        [bio]="friend.bio" 
-        [passion]="friend.passion">
-    </app-one-friend>
+    <article *ngFor="let friend of friends">
+        <app-one-friend [friend]="friend">
+        </app-one-friend>
+    </article>
 </div>
