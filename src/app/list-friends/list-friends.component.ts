@@ -1,37 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common'; 
 import { OneFriendComponent } from '../one-friend/one-friend.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-list-friends',
   standalone: true,
-  imports: [CommonModule, OneFriendComponent],
+  imports: [CommonModule, OneFriendComponent, FormsModule],
   templateUrl: './list-friends.component.html',
   styleUrls: ['./list-friends.component.css']
 })
-export class ListFriendsComponent implements OnInit{
-  friendName: string = ''; 
+export class ListFriendsComponent {
+  friendName: string = 'Kévin'; 
   statusMessage: string = 'Aucun ami'; 
-  isDisabled: boolean = true; 
-
-  onUpdateFriendsList(event: Event): void {
-    const inputElement = event.target as HTMLInputElement;
-    this.friendName = inputElement.value;
-    this.isDisabled = this.friendName.trim() === '';
-  }
 
   onAddFriend(): void {
     if (this.friendName.trim()) {
       this.statusMessage = `Votre ami "${this.friendName}" a été ajouté!`;
       this.friendName = ''; 
-      this.isDisabled = true;
     }
   }
 
-  ngOnInit(): void{
-    setTimeout(() => {
-      this.isDisabled = true;
-    }, 3000);
+  reset(): void {
+    this.friendName = '';
   }
 
   friends = [
