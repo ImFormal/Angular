@@ -1,0 +1,6 @@
+<div class="parent-container">      
+    <app-add-article (articleCreated)="onArticleAdded($event)"></app-add-article>
+    <div *ngFor="let article of articles.reverse()">
+        <app-article-element [article]="article"></app-article-element>
+    </div>
+</div>

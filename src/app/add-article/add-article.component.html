@@ -1,0 +1,12 @@
+<div class="add">
+    <h2>Add Element</h2>
+    <p class="ajouter">Ajouter un article ou un brouillon !</p>
+    <p>Titre article</p>
+    <input type="text" [(ngModel)]="titre" name="titre">
+    <p>Contenu Article</p>
+    <input type="text" [(ngModel)]="contenu" name="contenu">
+    <div class="buttons">
+        <input type="submit" value="Ajouter Article" (click)="onArticleAdded()">
+        <input type="submit" value="Ajouter Brouillon" (click)="onBrouillonAdded()"> 
+    </div>
+</div>
