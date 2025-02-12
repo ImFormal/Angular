@@ -8,14 +8,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './directive.component.css'
 })
 export class DirectiveComponent {
-  afficher: boolean = false;
+  afficher: boolean = true;
   tab: number[] = [];
   nb: number = 0;
   
   toggle(): void{
-    if(this.afficher){
-      this.tab.push(++this.nb);
-    }
+    this.tab.push(++this.nb);
     this.afficher = !this.afficher;
   }
 }

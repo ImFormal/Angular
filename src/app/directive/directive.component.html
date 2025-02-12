@@ -1,6 +1,7 @@
 <h2>Directive</h2>
 <button (click)="toggle()">{{ afficher ? "Masquer Détails" : "Afficher Détails" }}</button>
-<div [ngClass]="{'Off': !afficher, 'On': afficher}" *ngFor="let nombre of tab">
+<p [ngClass]="{'Off': !afficher, 'On': afficher}">lorem ipsum</p>
+<div *ngFor="let nombre of tab">
     <p *ngIf="nombre < 5" >{{ nombre }}</p>
     <p *ngIf="nombre >= 5" [ngStyle]="{'background-color':'blue'}" [ngClass]="'white'">{{ nombre }}</p>
 </div>
