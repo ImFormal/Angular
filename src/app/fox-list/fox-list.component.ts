@@ -17,18 +17,20 @@ export class FoxListComponent {
   foxes: Fox[] = [];
   isLoading: boolean = true;
   errorMessage: string = '';
+  audio: HTMLAudioElement | null = null;
 
   constructor(private foxService: FetchService) {}
 
   ngOnInit(): void {
     this.loadFoxes();
+    this.playMusic();
   }
 
   loadFoxes(): void {
     this.foxService
       .fetchList("https://randomfox.ca/floof/")
       .then((data) => {
-        this.foxes = [{image: data.image}];
+        this.foxes = [{ image: data.image }];
         console.log(this.foxes);
         this.isLoading = false;
       })
@@ -36,5 +38,19 @@ export class FoxListComponent {
         this.errorMessage = error.message;
         this.isLoading = false;
       });
+  }
+
+  playMusic(): void {
+    this.audio = new Audio('/assets/fox-song.mp3');
+    this.audio.volume = 0.5;
+    this.audio.loop = true;  
+    this.audio.play().catch(error => console.error("Lecture audio bloquée", error));
+  }
+
+  ngOnDestroy(): void {
+    if (this.audio) {
+      this.audio.pause();
+      this.audio = null;
+    }
   }
 }
