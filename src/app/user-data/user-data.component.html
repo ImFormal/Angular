@@ -1,0 +1,11 @@
+<div class="modify">
+    <h2>USER DATA</h2>
+    <p>Formulaire d'édition :</p>
+    <div class="infos">
+        <input type="text" [(ngModel)]="nom" name="nom" placeholder="votre nom">
+        <input type="text" [(ngModel)]="age" name="age">
+    </div>
+    <div class="buttons">
+        <input type="submit" value="MAJ des Data" (click)="onDataChanged()">
+    </div>
+</div>

@@ -1,0 +1,5 @@
+<div class="parent-container">
+    <h1>TP : Component Communication</h1>      
+    <app-active-user [user]="user"></app-active-user>
+    <app-user-data (userModified)="onDataChanged($event)"></app-user-data>
+</div>

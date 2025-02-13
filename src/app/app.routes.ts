@@ -7,6 +7,10 @@ import { BlogCentralCenterComponent } from './blog-central-center/blog-central-c
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { FoxListComponent } from './fox-list/fox-list.component';
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { ComponentCommunicationComponent } from './component-communication/component-communication.component';
+
 
 export const routes: Routes = [ 
     { path: 'home', component: HomeComponent },
@@ -14,7 +18,9 @@ export const routes: Routes = [
     { path: 'liste', component: ListFriendsComponent },
     { path: 'directive', component: DirectiveComponent},
     { path: 'blog', component: BlogCentralCenterComponent},
-    { path: 'pokemon', component: PokemonListComponent},
+    { path: 'pokemon', canActivate: [AuthGuardService], loadComponent: () => import('./pokemon-list/pokemon-list.component').then(m => m.PokemonListComponent)},
     { path: 'renard', component: FoxListComponent},
-    { path: 'inscription', component: RegisterComponent}
+    { path: 'inscription', component: RegisterComponent},
+    { path: 'login', component: LoginComponent},
+    { path: 'user', component: ComponentCommunicationComponent}
 ];
