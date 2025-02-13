@@ -23,7 +23,6 @@ export class FoxListComponent {
 
   ngOnInit(): void {
     this.loadFoxes();
-    this.playMusic();
     document.addEventListener("mousemove", this.enableAudioPlayback);
   }
 
