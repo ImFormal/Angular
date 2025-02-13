@@ -23,7 +23,7 @@ export class FoxListComponent {
 
   ngOnInit(): void {
     this.loadFoxes();
-    document.addEventListener("mousemove", this.enableAudioPlayback);
+    this.enableAudioPlayback();
   }
 
   loadFoxes(): void {
@@ -40,14 +40,12 @@ export class FoxListComponent {
       });
   }
 
-  enableAudioPlayback = () => {
+  enableAudioPlayback(): void {
     if (!this.audio) {
       this.audio = new Audio("assets/fox-song.mp3");
       this.audio.volume = 0.5;
       this.audio.loop = true;
       this.audio.play().catch(error => console.error("Lecture audio bloquée", error));
-  
-      document.removeEventListener("mousemove", this.enableAudioPlayback);
     }
   };
 
@@ -56,6 +54,5 @@ export class FoxListComponent {
       this.audio.pause();
       this.audio = null;
     }
-    document.removeEventListener("mousemove", this.enableAudioPlayback);
   }
 }
