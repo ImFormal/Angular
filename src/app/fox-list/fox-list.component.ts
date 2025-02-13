@@ -42,7 +42,9 @@ export class FoxListComponent {
 
   enableAudioPlayback = () => {
     if (!this.audio) {
-      this.audio = new Audio(`assets/fox-song.mp3`);
+      const isGitHubPages = window.location.href.includes('github.io');
+      const audioPath = isGitHubPages ? 'assets/fox-song.mp3' : 'assets/fox-song.mp3';
+      this.audio = new Audio(audioPath);
       this.audio.volume = 0.5;
       this.audio.loop = true;
       this.audio.play().catch(error => console.error("Lecture audio bloquée", error));
