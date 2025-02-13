@@ -6,6 +6,7 @@ import { DirectiveComponent } from './directive/directive.component';
 import { BlogCentralCenterComponent } from './blog-central-center/blog-central-center.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { FoxListComponent } from './fox-list/fox-list.component';
+import { RegisterComponent } from './register/register.component';
 
 export const routes: Routes = [ 
     { path: 'home', component: HomeComponent },
@@ -14,5 +15,6 @@ export const routes: Routes = [
     { path: 'directive', component: DirectiveComponent},
     { path: 'blog', component: BlogCentralCenterComponent},
     { path: 'pokemon', component: PokemonListComponent},
-    { path: 'renard', component: FoxListComponent}
+    { path: 'renard', component: FoxListComponent},
+    { path: 'inscription', component: RegisterComponent}
 ];
