@@ -17,8 +17,13 @@ export class NavComponent implements AfterViewInit {
   private bombParticles: Particle[] = [];
   private dog: Dog | null = new Dog();
   private pokeballs: Pokeball[] = [];
+  private audio: HTMLAudioElement | null = null;
 
   ngAfterViewInit() {
+    const renardLink = document.querySelector('a[routerLink="/renard"]');
+    if (renardLink) {
+      renardLink.addEventListener('click', this.playMusic);
+    }
     this.canvas = document.getElementById("animationCanvas") as HTMLCanvasElement;
     this.ctx = this.canvas.getContext("2d");
 
@@ -30,6 +35,25 @@ export class NavComponent implements AfterViewInit {
     this.resizeCanvas();
     window.addEventListener("resize", () => this.resizeCanvas());
     this.animate();
+  }
+
+  playMusic = () => {
+    if (!this.audio) {
+      this.audio = new Audio('/assets/fox-song.mp3');
+      this.audio.loop = true;
+      this.audio.volume = 0.5;
+    }
+
+    this.audio.play()
+      .then(() => console.log("Musique activée"))
+      .catch(error => console.warn("Lecture bloquée, l'utilisateur doit interagir d'abord", error));
+  };
+
+  ngOnDestroy(): void {
+    if (this.audio) {
+      this.audio.pause();
+      this.audio = null;
+    }
   }
 
   resizeCanvas() {
