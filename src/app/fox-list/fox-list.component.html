@@ -1,0 +1,24 @@
+<div class="container my-4">
+    <h1 class="text-center">Renard List</h1>
+  
+    <!-- Loading Indicator -->
+    <div *ngIf="isLoading" class="text-center">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="alert alert-danger text-center">
+      {{ errorMessage }}
+    </div>
+  
+    <!-- Pokémon Grid -->
+    <div *ngIf="!isLoading && !errorMessage" class="row">
+      <div *ngFor="let fox of foxes" class="col-md-4 col-sm-6 col-12 my-2 d-flex flex-column">
+        <div class="card flex-fill">
+          <img [src]="fox.image" class="card-img-top"/>
+        </div>
+      </div>
+    </div>
+  </div>

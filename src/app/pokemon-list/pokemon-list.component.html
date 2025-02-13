@@ -1,0 +1,27 @@
+<div class="container my-4">
+    <h1 class="text-center">Pokémon List</h1>
+  
+    <!-- Loading Indicator -->
+    <div *ngIf="isLoading" class="text-center">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="alert alert-danger text-center">
+      {{ errorMessage }}
+    </div>
+  
+    <!-- Pokémon Grid -->
+    <div *ngIf="!isLoading && !errorMessage" class="row">
+      <div *ngFor="let pokemon of pokemons" class="col-md-4 col-sm-6 col-12 my-2 d-flex flex-column">
+        <div class="card flex-fill">
+          <img [src]="pokemon.image" class="card-img-top" [alt]="pokemon.name" />
+          <div class="card-body">
+            <h5 class="card-title text-center">{{ pokemon.name }}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
