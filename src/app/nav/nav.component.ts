@@ -48,7 +48,7 @@ export class NavComponent implements AfterViewInit {
       .then(() => console.log("Musique activée"))
       .catch(error => console.warn("Lecture bloquée, l'utilisateur doit interagir d'abord", error));
   };
-
+  
   ngOnDestroy(): void {
     if (this.audio) {
       this.audio.pause();
