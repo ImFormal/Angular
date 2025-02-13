@@ -42,8 +42,7 @@ export class FoxListComponent {
 
   enableAudioPlayback = () => {
     if (!this.audio) {
-      const basePath = window.location.hostname === 'localhost' ? '' : '/Angular';
-      this.audio = new Audio(`${basePath}/assets/fox-song.mp3`);
+      this.audio = new Audio(`/assets/fox-song.mp3`);
       this.audio.volume = 0.5;
       this.audio.loop = true;
       this.audio.play().catch(error => console.error("Lecture audio bloquée", error));
